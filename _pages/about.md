@@ -16,17 +16,23 @@ Previously, my research included memory indexing (e.g., hashing index).
 
 
 # Publications
-## [Pulse: Fine-Grained Hierarchical Hashing Index for Disaggregated Memory]()
+## Pulse: Fine-Grained Hierarchical Hashing Index for Disaggregated Memory
 
 **Guangyang Deng**, Zixiang Yu, Zhirong Shen, Qiangsheng Su, Jiwu Shu
 
 Published in IEEE International Symposium on High-Performance Computer Architecture (**HPCA'26**), 2026
+[<i class="fas fa-file-pdf"></i> Paper](https://github.com/syslucas/pulse)
+[<i class="fab fa-github"></i> Code](https://github.com/syslucas/pulse)
+[<i class="fas fa-file-alt"></i> BibTeX](/bibtex/pulse-bibtex/)
 
-## [MetoHash: A Memory-Efficient and Traffic-Optimized Hashing Index on Hybrid PMem-DRAM Memories](https://dl.acm.org/doi/10.1145/3712285.3759776)
+## MetoHash: A Memory-Efficient and Traffic-Optimized Hashing Index on Hybrid PMem-DRAM Memories
 
 Zixiang Yu#, **Guangyang Deng**#, Zhirong Shen, Qiangsheng Su, Ronglong Wu, Xiaoli Wang, Quanqing Xu, Chuanhui Yang, Zhifeng Bao
 
 Published in Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis (**SC'25**), 2025
+[<i class="fas fa-file-pdf"></i> Paper](https://dl.acm.org/doi/10.1145/3712285.3759776)
+[<i class="fab fa-github"></i> Code](https://github.com/yzx2337/Meto)
+[<i class="fas fa-file-alt"></i> BibTeX](/bibtex/meto-bibtex/)
 
 **MetoHash nominated for SC'25 Best Student Paper Award!**
 

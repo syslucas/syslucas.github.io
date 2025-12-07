@@ -11,9 +11,9 @@ title                    : "Guangyang Deng"
 title_separator          : "-"
 name                     : &name "Guangyang Deng"
 description              : &description ""
-url                      : https://gy-deng.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://syslucas.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "gy-deng/gy-deng.github.io"
+repository               : "syslucas/syslucas.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "gy-deng"
+  github           : "syslucas"
   google_plus      :
   keybase          :
   instagram        :
