@@ -16,6 +16,12 @@ Education
 
 Publications
 ======
+
+## [Breaking Barriers in Atomic Scaling: A Hardware–Software-Collaborated Framework to Deconstruct RDMA Atomic]()
+**Guangyang Deng**, Qiangsheng Su, Zhirong Shen, Qing Wang, Yina Lv, Ronglong Wu, Jiwu Shu
+
+Published in Proceedings of the 53rd Annual International Symposium on Computer Architecture (**ISCA'26**), 2026
+
 ## [Pulse: Fine-Grained Hierarchical Hashing Index for Disaggregated Memory]()
 
 **Guangyang Deng**, Zixiang Yu, Zhirong Shen, Qiangsheng Su, Jiwu Shu

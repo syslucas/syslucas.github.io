@@ -16,13 +16,22 @@ Previously, my research included memory indexing (e.g., hashing index).
 
 
 # Publications
+
+## Breaking Barriers in Atomic Scaling: A Hardware–Software-Collaborated Framework to Deconstruct RDMA Atomic
+**Guangyang Deng**, Qiangsheng Su, Zhirong Shen, Qing Wang, Yina Lv, Ronglong Wu, Jiwu Shu
+
+Published in Proceedings of the 53rd Annual International Symposium on Computer Architecture (**ISCA'26**), 2026
+[<i class="fas fa-file-pdf"></i> Paper](https://github.com/xmussys/fusa)
+[<i class="fab fa-github"></i> Code](https://github.com/xmusys/fusa)
+[<i class="fas fa-file-alt"></i> BibTeX](/bibtex/fusa-bibtex/)
+
 ## Pulse: Fine-Grained Hierarchical Hashing Index for Disaggregated Memory
 
 **Guangyang Deng**, Zixiang Yu, Zhirong Shen, Qiangsheng Su, Jiwu Shu
 
 Published in IEEE International Symposium on High-Performance Computer Architecture (**HPCA'26**), 2026
-[<i class="fas fa-file-pdf"></i> Paper](https://github.com/syslucas/pulse)
-[<i class="fab fa-github"></i> Code](https://github.com/syslucas/pulse)
+[<i class="fas fa-file-pdf"></i> Paper](https://github.com/xmusys/pulse)
+[<i class="fab fa-github"></i> Code](https://github.com/xmusys/pulse)
 [<i class="fas fa-file-alt"></i> BibTeX](/bibtex/pulse-bibtex/)
 
 ## MetoHash: A Memory-Efficient and Traffic-Optimized Hashing Index on Hybrid PMem-DRAM Memories
