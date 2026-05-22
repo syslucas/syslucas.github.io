@@ -1,4 +1,68 @@
-# al-folio
+# syslucas-al-folio
+
+This repository contains the source for Guangyang Deng's academic homepage, built on top of [al-folio](https://github.com/alshedivat/al-folio).
+
+## Run locally
+
+This site is currently configured as the root GitHub Pages site in [/_config.yml](/Users/gydeng/Documents/Codex/个人主页/syslucas-al-folio/_config.yml), with:
+
+- `url: https://syslucas.github.io`
+- `baseurl: ""`
+
+### 1. Install dependencies
+
+Recommended local environment:
+
+- Ruby `3.3`
+- Bundler
+- Python virtual environment at `.venv` (used in the current local setup)
+
+If needed, install Ruby gems:
+
+```bash
+PATH=/opt/homebrew/opt/ruby@3.3/bin:$PATH bundle install
+```
+
+### 2. Start the local server
+
+From the repository root, run:
+
+```bash
+PATH=/Users/gydeng/Documents/Codex/个人主页/syslucas-al-folio/.venv/bin:/opt/homebrew/opt/ruby@3.3/bin:/opt/homebrew/bin:$PATH bundle exec jekyll serve --host 127.0.0.1 --port 4000
+```
+
+Then open:
+
+- [http://127.0.0.1:4000/](http://127.0.0.1:4000/)
+
+### 3. Build without serving
+
+To only check whether the site can be generated successfully:
+
+```bash
+PATH=/Users/gydeng/Documents/Codex/个人主页/syslucas-al-folio/.venv/bin:/opt/homebrew/opt/ruby@3.3/bin:/opt/homebrew/bin:$PATH bundle exec jekyll build
+```
+
+Generated files will be written to `_site/`.
+
+## Deploy to GitHub Pages
+
+This repository is set up as the personal homepage site, so the deployed URL is expected to be:
+
+- [https://syslucas.github.io/](https://syslucas.github.io/)
+
+Typical workflow:
+
+1. Commit changes to this repository.
+2. Push to GitHub.
+3. Let the GitHub Actions Pages workflow build and deploy automatically.
+
+To publish it as the root personal homepage, the target repository should be named `syslucas.github.io`.
+
+## Notes
+
+- The `repositories` page now fetches the most recently active repositories from the `syslucas` GitHub account at runtime.
+- Publication titles link to their paper pages when a publication URL is available.
 
 <div align="center">
 

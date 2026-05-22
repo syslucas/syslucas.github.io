@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div class="post">
+<div class="post {% if page.homepage_enhanced %}homepage-post{% endif %}">
   <header class="post-header">
     <h1 class="post-title">
       {% if site.title == 'blank' %}
@@ -16,7 +16,7 @@ layout: default
 
   <article>
     {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
+      <div class="profile homepage-profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
         {% if page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
           {% if page.profile.image_circular %}
@@ -41,27 +41,40 @@ layout: default
     <div class="clearfix">{{ content }}</div>
 
     <!-- News -->
-    {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-      </h2>
-      {% include news.liquid limit=true %}
+    {% if page.announcements and page.announcements.enabled and page.homepage_enhanced != true %}
+      <section class="{% if page.homepage_enhanced %}home-section{% endif %}">
+        <h2>
+          <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
+        </h2>
+        {% include news.liquid limit=true %}
+      </section>
     {% endif %}
 
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
+      <section class="{% if page.homepage_enhanced %}home-section latest-posts-section{% endif %}">
+        <div class="{% if page.homepage_enhanced %}section-heading{% endif %}">
+          {% if page.homepage_enhanced %}
+            <p class="eyebrow">Writing</p>
+            <h3><a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest Posts</a></h3>
+          {% else %}
+            <h2>
+              <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest Posts</a>
+            </h2>
+          {% endif %}
+        </div>
+        {% include latest_posts.liquid %}
+      </section>
     {% endif %}
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
+      <section class="{% if page.homepage_enhanced %}home-section{% endif %}">
+        <h2>
+          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
+        </h2>
+        {% include selected_papers.liquid %}
+      </section>
     {% endif %}
 
     <!-- Social -->
@@ -78,3 +91,7 @@ layout: default
     {% endif %}
   </article>
 </div>
+
+{% if page.homepage_enhanced %}
+  <script defer src="{{ '/assets/js/home-enhancements.js' | relative_url | bust_file_cache }}"></script>
+{% endif %}

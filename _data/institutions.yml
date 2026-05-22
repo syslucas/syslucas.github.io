@@ -1,0 +1,35 @@
+xmu:
+  name: Xiamen University
+  short: XMU
+  logo: /assets/img/institutions/Xiamen_University_logo.svg
+
+nju:
+  name: Nanjing University
+  short: NJU
+  logo: /assets/img/institutions/Nanjing_University.svg
+
+xmusys:
+  name: XMU Systems Group
+  short: SYS
+
+tiktok:
+  name: TikTok
+  short: TT
+  logo: /assets/img/institutions/tiktok.svg
+
+uq:
+  name: The University of Queensland
+  short: UQ
+  logo: /assets/img/institutions/University%20of%20Queensland%20Australia%20Logo%20Vector.svg
+  zoom: 1.4
+
+oceanbase:
+  name: OceanBase
+  short: OB
+  logo: /assets/img/institutions/Oceanbase.svg
+  wide: true
+  zoom: 2.15
+
+ant:
+  name: Ant Research
+  short: ANT

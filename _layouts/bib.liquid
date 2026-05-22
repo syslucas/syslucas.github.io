@@ -1,14 +1,25 @@
 ---
 ---
-<div class="row">
+<div class="pub-row">
   {% if site.enable_publication_thumbnails %}
-    <div class="col col-sm-2 abbr">
+    <div class="pub-venue abbr">
       {%- if entry.abbr -%}
         {%- if site.data.venues[entry.abbr] -%}
           {% assign venue_style = null %}
           {% if site.data.venues[entry.abbr].color != blank %}
             {% assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' %}
           {%- endif -%}
+          {% capture venue_badge %}
+            <span class="venue-abbr">
+              {{- entry.abbr -}}
+              {%- if entry.year -%}
+                <span class="venue-year">'{{ entry.year | slice: 2, 2 }}</span>
+              {%- endif -%}
+            </span>
+            {%- if entry.location -%}
+              <span class="venue-location">{{ entry.location }}</span>
+            {%- endif -%}
+          {% endcapture %}
           <abbr
             class="badge rounded w-100"
             {% if venue_style %}
@@ -16,13 +27,23 @@
             {% endif -%}
           >
             {% if site.data.venues[entry.abbr].url %}
-              <a href="{{ site.data.venues[entry.abbr].url }}">{{ entry.abbr }}</a>
+              <a href="{{ site.data.venues[entry.abbr].url }}">{{ venue_badge | strip }}</a>
             {% else %}
-              <div>{{- entry.abbr -}}</div>
+              <div>{{ venue_badge | strip }}</div>
             {% endif %}
           </abbr>
         {% else %}
-          <abbr class="badge rounded w-100">{{ entry.abbr }}</abbr>
+          <abbr class="badge rounded w-100">
+            <span class="venue-abbr">
+              {{- entry.abbr -}}
+              {%- if entry.year -%}
+                <span class="venue-year">'{{ entry.year | slice: 2, 2 }}</span>
+              {%- endif -%}
+            </span>
+            {%- if entry.location -%}
+              <span class="venue-location">{{ entry.location }}</span>
+            {%- endif -%}
+          </abbr>
         {% endif %}
       {% endif %}
       {% if entry.preview %}
@@ -42,13 +63,65 @@
           %}
         {% endif %}
       {% endif %}
+      {% if entry.institutions %}
+        {% assign institution_keys = entry.institutions | split: ',' %}
+        <div class="institution-grid" aria-label="Collaborating institutions">
+          {% for institution_key in institution_keys limit: 4 %}
+            {% assign institution_id = institution_key | strip %}
+            {% assign institution = site.data.institutions[institution_id] %}
+            {% if institution %}
+              <div
+                class="institution-tile{% if institution.wide %} wide{% endif %}"
+                title="{{ institution.name }}"
+                aria-label="{{ institution.name }}"
+              >
+                {% if institution.logo %}
+                  <img
+                    src="{{ institution.logo | relative_url }}"
+                    alt="{{ institution.name }} logo"
+                    {% if institution.zoom %}style="transform: scale({{ institution.zoom }});"{% endif %}
+                  >
+                {% else %}
+                  <span>{{ institution.short | default: institution_id | upcase }}</span>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
   {% endif %}
 
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
+  <div id="{{ entry.key }}" class="pub-main">
     <!-- Title -->
-    <div class="title">{{ entry.title }}</div>
+    {% assign title_url = '' %}
+    {% if entry.url and entry.url != entry.code %}
+      {% assign title_url = entry.url %}
+    {% elsif entry.doi %}
+      {% assign title_url = entry.doi | prepend: 'https://doi.org/' %}
+    {% elsif entry.arxiv %}
+      {% assign title_url = entry.arxiv | prepend: 'https://arxiv.org/abs/' %}
+    {% elsif entry.html %}
+      {% if entry.html contains '://' %}
+        {% assign title_url = entry.html %}
+      {% else %}
+        {% assign title_url = entry.html | prepend: '/assets/html/' | relative_url %}
+      {% endif %}
+    {% elsif entry.pdf %}
+      {% if entry.pdf contains '://' %}
+        {% assign title_url = entry.pdf %}
+      {% else %}
+        {% assign title_url = entry.pdf | prepend: '/assets/pdf/' | relative_url %}
+      {% endif %}
+    {% endif %}
+    <div class="title">
+      {% if title_url != '' %}
+        <a href="{{ title_url }}">{{ entry.title }}</a>
+      {% else %}
+        {{ entry.title }}
+      {% endif %}
+    </div>
     <!-- Author -->
     <div class="author">
       {% assign author_array_size = entry.author_array | size %}
@@ -60,24 +133,13 @@
 
       {%- for author in entry.author_array limit: author_array_limit -%}
         {% assign author_is_self = false %}
-        {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
-        {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+        {%- assign author_last_name = author.last | regex_replace: '[#*∗†‡§¶‖&^]', '' -%}
+        {%- assign author_last_html = author.last | regex_replace: '([#*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
         {% if site.scholar.last_name contains author_last_name %}
           {% if site.scholar.first_name contains author.first %}
             {% assign author_is_self = true %}
           {% endif %}
         {%- endif -%}
-        {% assign coauthor_url = null %}
-        {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
-        {% if site.data.coauthors[clean_last_name] %}
-          {%- for coauthor in site.data.coauthors[clean_last_name] -%}
-            {% if coauthor.firstname contains author.first %}
-              {%- assign coauthor_url = coauthor.url -%}
-              {% break %}
-            {%- endif -%}
-          {% endfor %}
-        {%- endif -%}
-
         {%- if forloop.length > 1 -%}
           {% if forloop.first == false -%}
             {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
@@ -90,15 +152,8 @@
             {{ author_last_html -}}
           </em>
         {%- else -%}
-          {%- if coauthor_url -%}
-            <a href="{{ coauthor_url }}">
-              {{- author.first }}
-              {{ author_last_html -}}
-            </a>
-          {%- else -%}
-            {{- author.first }}
-            {{ author_last_html -}}
-          {% endif %}
+          {{- author.first }}
+          {{ author_last_html -}}
         {%- endif -%}
       {% endfor %}
       {%- assign more_authors = author_array_size | minus: author_array_limit -%}
@@ -115,7 +170,7 @@
             {% assign more_authors_show = more_authors_show | append: ', ' %}
           {% endunless %}
         {%- endfor -%}
-        {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+        {%- assign more_authors_show = more_authors_show | regex_replace: '([#*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
         , and
         <span
           class="more-authors"
