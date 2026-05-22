@@ -315,7 +315,13 @@ Run the test yourself: [Google Lighthouse PageSpeed Insights](https://pagespeed.
 
 <!--ts-->
 
-- [al-folio](#al-folio)
+- [syslucas-al-folio](#syslucas-al-folio)
+  - [Run locally](#run-locally)
+    - [1. Install dependencies](#1-install-dependencies)
+    - [2. Start the local server](#2-start-the-local-server)
+    - [3. Build without serving](#3-build-without-serving)
+  - [Deploy to GitHub Pages](#deploy-to-github-pages)
+  - [Notes](#notes)
   - [User community](#user-community)
   - [Lighthouse PageSpeed Insights](#lighthouse-pagespeed-insights)
     - [Desktop](#desktop)
