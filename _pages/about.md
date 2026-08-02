@@ -4,6 +4,9 @@ title: About
 permalink: /
 subtitle: Master's student in Computer Science at Xiamen University
 homepage_enhanced: true
+math: false
+masonry: false
+medium_zoom: false
 
 profile:
   align: right

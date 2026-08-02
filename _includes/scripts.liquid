@@ -13,7 +13,7 @@
   crossorigin="anonymous"
 ></script>
 
-{% if site.enable_masonry %}
+{% if site.enable_masonry and page.masonry != false %}
   <!-- Masonry & imagesLoaded -->
   <script
     defer
@@ -152,7 +152,7 @@
   <script src="{{ '/assets/js/tooltips-setup.js' | relative_url | bust_file_cache }}"></script>
 {% endif %}
 
-{% if site.enable_medium_zoom %}
+{% if site.enable_medium_zoom and page.medium_zoom != false %}
   <!-- Medium Zoom JS -->
   <script
     defer
@@ -195,7 +195,7 @@
   <script async src="https://badge.dimensions.ai/badge.js"></script>
 {% endif %}
 
-{% if site.enable_math %}
+{% if site.enable_math and page.math != false %}
   <!-- MathJax -->
   <script
     defer
