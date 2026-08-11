@@ -41,7 +41,7 @@ cv:
           - Jiwu Shu
         publisher: Proceedings of the 53rd Annual International Symposium on Computer Architecture
         releaseDate: 2026
-        url: https://github.com/xmusys/fusa
+        url: https://ieeexplore.ieee.org/abstract/document/11617696/
         summary: Published at ISCA 2026.
       - title: "Pulse: Fine-Grained Hierarchical Hashing Index for Disaggregated Memory"
         authors:
