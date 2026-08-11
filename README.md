@@ -4,7 +4,7 @@ This repository contains the source for Guangyang Deng's academic homepage, buil
 
 ## Run locally
 
-This site is currently configured as the root GitHub Pages site in [/_config.yml](/Users/gydeng/Documents/Codex/个人主页/syslucas-al-folio/_config.yml), with:
+This site is currently configured as the root GitHub Pages site in [/\_config.yml](/Users/gydeng/Documents/Codex/个人主页/syslucas-al-folio/_config.yml), with:
 
 - `url: https://syslucas.github.io`
 - `baseurl: ""`

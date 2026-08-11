@@ -26,7 +26,9 @@
     </div>
     {% if include.limit and remaining_news > 0 %}
       <details class="news-more">
-        <summary>Show {{ remaining_news }} more update{% if remaining_news > 1 %}s{% endif %}</summary>
+        <summary>
+          Show {{ remaining_news }} more update{% if remaining_news > 1 %}s{% endif %}
+        </summary>
         <div class="table-responsive">
           <table class="table table-sm table-borderless">
             {% for item in news offset: news_limit %}

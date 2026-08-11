@@ -79,7 +79,9 @@
                   <img
                     src="{{ institution.logo | relative_url }}"
                     alt="{{ institution.name }} logo"
-                    {% if institution.zoom %}style="transform: scale({{ institution.zoom }});"{% endif %}
+                    {% if institution.zoom %}
+                      style="transform: scale({{ institution.zoom }});"
+                    {% endif %}
                   >
                 {% else %}
                   <span>{{ institution.short | default: institution_id | upcase }}</span>
